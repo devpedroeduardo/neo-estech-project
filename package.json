@@ -10,8 +10,8 @@
   "test": "vitest run",
   "test:watch": "vitest",
   "test:e2e": "playwright test",
-  "test:all": "npm run test && npm run test:e2e",
-  "postinstall": "playwright install --with-deps"
+  "test:all": "npm run test && npm run test:e2e"
+
   },
   "dependencies": {
     "@ant-design/icons": "^6.1.0",
