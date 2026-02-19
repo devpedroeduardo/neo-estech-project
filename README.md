@@ -10,6 +10,8 @@
 
 Módulo front-end para gestão de chamados operacionais corporativos. Desenvolvido como parte do desafio técnico para a vaga de Frontend Developer, com foco em alta performance, componentização escalável e experiência do usuário (UX).
 
+**🔗 Aplicação em Produção (Live Demo):** [https://neo-estech-project.vercel.app/](https://neo-estech-project.vercel.app/)
+
 ---
 
 ## ✨ Funcionalidades Implementadas
@@ -23,7 +25,7 @@ Módulo front-end para gestão de chamados operacionais corporativos. Desenvolvi
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 🚀 Como Executar o Projeto Localmente
 
 O projeto utiliza o **Next.js (App Router)** com rotas de API simuladas para o backend.
 
@@ -35,8 +37,8 @@ O projeto utiliza o **Next.js (App Router)** com rotas de API simuladas para o b
 
 1. Clone o repositório:
     ```bash
-    git clone [https://github.com/devpedroeduardo/neo-estech.git](https://github.com/devpedroeduardo/neo-estech.git)
-    cd neo-estech
+    git clone [https://github.com/devpedroeduardo/neo-estech-project.git](https://github.com/devpedroeduardo/neo-estech-project.git)
+    cd neo-estech-project
     ```
 
 2. Instale as dependências (os binários do Playwright serão instalados automaticamente via postinstall):
