@@ -32,7 +32,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     </div>
   );
 
-  // 1. APP SHELL: Altura fixa na tela toda e bloqueia rolagem global
   return (
     <Layout style={{ height: '100vh', overflow: 'hidden' }}>
       
@@ -61,7 +60,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </Header>
         )}
 
-        {/* 3. A MÁGICA DO SCROLL */}
         <Content style={{ 
           flex: 1, 
           padding: isMobile ? 16 : 24, 

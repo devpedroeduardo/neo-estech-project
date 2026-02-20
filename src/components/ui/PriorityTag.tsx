@@ -15,7 +15,6 @@ const prioridadeColor: Record<PrioridadeChamado, string> = {
 
 export default function PriorityTag({ prioridade }: PriorityTagProps) {
   return (
-    // Substituímos bordered={false} por variant="filled"
     <Tag color={prioridadeColor[prioridade]} variant="filled">
       {prioridade.toUpperCase()}
     </Tag>

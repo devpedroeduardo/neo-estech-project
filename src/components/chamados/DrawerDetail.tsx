@@ -19,12 +19,11 @@ interface DrawerDetailProps {
 export default function DrawerDetail({ open, onClose, chamado }: DrawerDetailProps) {
   const screens = Grid.useBreakpoint();
   
-  // Consideramos mobile se a tela for menor que 'sm'
   const isMobile = screens.sm === false;
   
   if (!chamado) return null;
 
-  // Lógica Sênior: Montar uma timeline dinâmica baseada nas datas e no status atual
+  //Montar uma timeline dinâmica baseada nas datas e no status atual
   const timelineItems: TimelineItemProps[] = [
     {
       color: 'blue',
@@ -77,7 +76,6 @@ export default function DrawerDetail({ open, onClose, chamado }: DrawerDetailPro
       onClose={onClose}
       open={open}
     >
-      {/* TROCAMOS O <Space> POR UMA DIV FLEX NATIVA E SEGURA */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', paddingBottom: '40px' }}>
         
         {/* CABEÇALHO COM BADGES */}

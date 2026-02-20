@@ -6,7 +6,7 @@ import * as z from 'zod';
 
 import { useCreateChamado, CreateChamadoDTO } from '@/hooks/useCreateChamado';
 
-// 1. Definimos o Schema de Validação com o Zod
+// 1. Definir o Schema de Validação com o Zod
 const schema = z.object({
   titulo: z.string().min(5, 'O título deve ter pelo menos 5 caracteres'),
   area: z.enum(['Refrigeração', 'Energia', 'Ar-condicionado', 'Água'], { 
@@ -57,8 +57,8 @@ export default function NovoChamadoModal({ open, onClose }: NovoChamadoModalProp
         title="Abrir Novo Chamado"
         open={open}
         onCancel={onClose}
-        footer={null} // Vamos usar o botão de submit do próprio form
-        destroyOnHidden// Garante que o estado seja limpo ao fechar
+        footer={null}
+        destroyOnHidden
         style={{top: 20 }}
         styles={{
           body: {
@@ -84,7 +84,6 @@ export default function NovoChamadoModal({ open, onClose }: NovoChamadoModalProp
           </Form.Item>
 
           <Row gutter={16}>
-            {/* xs=24 (Ocupa a linha toda no mobile), sm=12 (Ocupa metade na tela média/grande) */}
             <Col xs={24} sm={12}>
               <Form.Item 
                 label="Área" 

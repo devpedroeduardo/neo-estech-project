@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server';
 import { getChamadosDB, delay } from '@/lib/mock-db';
 
 // Mapeamento de pesos para a ordenação correta das prioridades
-// (Se ordenarmos alfabeticamente, "Baixa" viria antes de "Crítica", o que é errado)
 const priorityWeight = {
   'Crítica': 4,
   'Alta': 3,
@@ -29,7 +28,7 @@ export async function GET(request: Request) {
   // 3. Obter a "tabela" em memória (Aquele singleton com os 1200 itens)
   let chamados = getChamadosDB();
 
-  // 4. Aplicar Filtros (A ordem importa para performance, mas aqui sendo em memória é tranquilo)
+  // 4. Aplicar Filtros
   if (search) {
     chamados = chamados.filter(c => c.titulo.toLowerCase().includes(search));
   }

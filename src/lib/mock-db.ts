@@ -1,10 +1,8 @@
 import { fakerPT_BR as faker } from '@faker-js/faker';
 import { Chamado, StatusChamado, PrioridadeChamado, AreaChamado } from '../types/chamado';
 
-// Dados estáticos do teste (A semente obrigatória)
+// Dados estáticos do teste
 const SEED_DATA: Chamado[] = [
-    // ... Copie e cole aqui o JSON do PDF (ids 1001 a 1012) ...
-    // Vou colocar um exemplo abreviado para não ocupar espaço, mas você coloca todos os 12.
     {
         id: 1001,
         titulo: "Compressor com temperatura acima do limite",
@@ -42,13 +40,11 @@ const generateMockChamados = (count: number): Chamado[] => {
 };
 
 // Singleton para manter os dados em memória durante a execução do servidor dev
-// Se não fizermos isso, cada reload recria os 1000 itens
 let cachedData: Chamado[] | null = null;
 
 export const getChamadosDB = () => {
   if (!cachedData) {
     const generated = generateMockChamados(1200); // 1200 itens gerados
-    // Colocamos o SEED_DATA primeiro para eles aparecerem no topo se ordenados por ID/Data
     cachedData = [...SEED_DATA, ...generated]; 
   }
   return cachedData;
