@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Table, Button, Result, Typography, Input, Select, Row, Col, Card, Flex } from 'antd';
 import type { TableProps } from 'antd';
 import dayjs from 'dayjs';
-import { SearchOutlined, ClearOutlined, PlusOutlined } from '@ant-design/icons';
+import { SearchOutlined, ClearOutlined, PlusOutlined, EyeOutlined } from '@ant-design/icons';
 import DrawerDetail from '@/components/chamados/DrawerDetail';
 import NovoChamadoModal from '@/components/chamados/NovoChamadoModal';
 
@@ -102,15 +102,26 @@ export default function ChamadosTable() {
       width: 150,
       render: (date) => dayjs(date).format('DD/MM/YYYY HH:mm'),
     },
-    {
+   {
       title: 'Ações',
       key: 'acoes',
-      width: 100,
+      width: 120,
       render: (_, record) => (
-        <Button type="link" size="small" onClick={() => {
+        <Button 
+          type="text" 
+          size="small" 
+          icon={<EyeOutlined />} 
+          style={{ 
+            color: '#ec6725', 
+            fontWeight: 500, 
+            background: '#fff3ed', 
+            borderRadius: '6px'
+          }}
+          onClick={() => {
             setSelectedChamado(record);
             setIsDrawerOpen(true);
-          }}>
+          }}
+        >
           Detalhes
         </Button>
       ),
@@ -125,18 +136,21 @@ export default function ChamadosTable() {
         style={{ borderRadius: 8, border: '1px solid #f0f0f0' }}
       >
         <Row gutter={[16, 16]} align="middle">
-          <Col xs={24} md={8} lg={8}>
+          {/* 1. Busca: Ocupa 6 espaços no Desktop */}
+          <Col xs={24} md={12} lg={6}>
             <Input.Search
               placeholder="Buscar por título..."
               allowClear
               onSearch={(value) => {
                 setSearch(value);
-                setPage(1); // Sempre volta pra pág 1 ao buscar
+                setPage(1); 
               }}
               enterButton={<SearchOutlined />}
             />
           </Col>
-          <Col xs={12} md={4} lg={4}>
+          
+          {/* 2. Status: Ocupa 4 espaços no Desktop */}
+          <Col xs={12} md={6} lg={4}>
             <Select
               style={{ width: '100%' }}
               placeholder="Status"
@@ -150,7 +164,9 @@ export default function ChamadosTable() {
               <Option value="Cancelado">Cancelado</Option>
             </Select>
           </Col>
-          <Col xs={12} md={4} lg={4}>
+
+          {/* 3. Prioridade: Ocupa 4 espaços no Desktop */}
+          <Col xs={12} md={6} lg={4}>
             <Select
               style={{ width: '100%' }}
               placeholder="Prioridade"
@@ -164,7 +180,9 @@ export default function ChamadosTable() {
               <Option value="Baixa">Baixa</Option>
             </Select>
           </Col>
-          <Col xs={12} md={4} lg={4}>
+
+          {/* 4. Área: Separada na sua própria coluna de 4 espaços */}
+          <Col xs={24} md={12} lg={4}>
             <Select
               style={{ width: '100%' }}
               placeholder="Área"
@@ -178,13 +196,18 @@ export default function ChamadosTable() {
               <Option value="Água">Água</Option>
             </Select>
           </Col>
-          <Col xs={12} md={4} lg={4} style={{ textAlign: 'right',display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
-            <Button icon={<ClearOutlined />} onClick={handleClearFilters}>
-              Limpar
-            </Button>
-            <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalOpen(true)}>
-              Novo Chamado
-            </Button>
+
+          {/* 5. Botões: Na última coluna ocupando os 6 espaços restantes (6+4+4+4+6 = 24) */}
+          <Col xs={24} md={12} lg={6}>
+            {/* Flex para alinhar os botões à direita com um espaçamento perfeito */}
+            <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+              <Button icon={<ClearOutlined />} onClick={handleClearFilters}>
+                Limpar
+              </Button>
+              <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalOpen(true)}>
+                Novo Chamado
+              </Button>
+            </div>
           </Col>
         </Row>
       </Card>
